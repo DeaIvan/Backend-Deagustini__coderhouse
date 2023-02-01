@@ -30,8 +30,7 @@ app.get('/products/:id', (req, res) => {
     const idProducto = Number(req.params.id);
 
     const product = products.find(u=>u.id === idProducto);
-    if(product === -1) return res.send('Producto no encontrado');
-
+    if(!product) return res.send({error: 'Producto no encontrado'});
     res.send(product);
 });
 
